@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:background="@color/signupBackground"
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
@@ -33,16 +33,17 @@
 
 
         <EditText
+            android:inputType="number"
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter phone number"/>
 
        <Button
-           android:id="@+id/submit"
+           android:id="@+id/signup"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="Sigup"/>
+           android:text="Signup"/>
 
     </LinearLayout>
 

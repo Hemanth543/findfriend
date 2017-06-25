@@ -1,6 +1,7 @@
 package thehub.life.fd;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,14 +21,32 @@ public class signup extends AppCompatActivity {
         name = (EditText) findViewById(R.id.name);
         phone = (EditText) findViewById(R.id.phone);
         email = (EditText) findViewById(R.id.email);
-        submit=(Button)findViewById(R.id.submit);
+        submit=(Button)findViewById(R.id.signup);
+
+        SharedPreferences sp = getSharedPreferences("FD",0);
+        String data = sp.getString("login",null);
+
+        if(data!=null)
+        {
+            Intent it=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(it);
+        }
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in =new Intent(getApplicationContext(),MainActivity.class);
+
+                SERVER.REG_USER(
+                        name.getText().toString().toLowerCase(),
+                        email.getText().toString().toLowerCase(),
+                        phone.getText().toString(),
+                       getApplicationContext()
+                );
+
+               /* Intent in =new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(in);
-                finish();
+                finish();*/
             }
         });
 

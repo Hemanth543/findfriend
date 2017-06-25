@@ -7,12 +7,18 @@
     tools:context="thehub.life.fd.signup">
 
     <LinearLayout
+        android:background="@color/signupBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
 
+        <ImageView
+            android:src="@drawable/signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
         <EditText
             android:id="@+id/name"
             android:layout_width="match_parent"

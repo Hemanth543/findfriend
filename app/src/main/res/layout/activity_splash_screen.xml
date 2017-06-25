@@ -7,8 +7,11 @@
     tools:context="thehub.life.fd.SplashScreen">
 
     <ImageView
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/splash" />
+        android:src="@drawable/splash"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp" />
 
 </android.support.constraint.ConstraintLayout>

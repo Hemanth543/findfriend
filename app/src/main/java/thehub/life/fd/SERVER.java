@@ -40,9 +40,12 @@ public class SERVER {
                     editor.apply();
                     editor.commit();
 
-                    Intent intent = new Intent(ctx.getApplicationContext(),MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Intent intent = new Intent(ctx.getApplicationContext(),MapsActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(intent);
+
                 }
             }
 

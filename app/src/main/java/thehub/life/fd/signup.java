@@ -28,8 +28,9 @@ public class signup extends AppCompatActivity {
 
         if(data!=null)
         {
-            Intent it=new Intent(getApplicationContext(),MainActivity.class);
+            Intent it=new Intent(getApplicationContext(),MapsActivity.class);
             startActivity(it);
+            finish();
         }
 
 
@@ -44,9 +45,6 @@ public class signup extends AppCompatActivity {
                        getApplicationContext()
                 );
 
-               /* Intent in =new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(in);
-                finish();*/
             }
         });
 

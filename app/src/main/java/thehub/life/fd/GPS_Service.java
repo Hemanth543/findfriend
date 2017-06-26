@@ -13,6 +13,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
 /**
  * Created by rajeshkumarsheela on 6/26/17.
  */
@@ -22,7 +24,7 @@ public class GPS_Service extends Service{
 
     private LocationListener listener;
     private LocationManager locationManager;
-   // private static final Firebase firebase = new Firebase("https://securechat-96a99.firebaseio.com/");
+    private static final Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
     private static final String TAG = "GPS_SERVICE";
 
 

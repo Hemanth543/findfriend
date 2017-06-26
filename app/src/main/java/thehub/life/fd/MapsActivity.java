@@ -15,6 +15,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -94,9 +95,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Toast.makeText(getApplicationContext(),"updation",Toast.LENGTH_SHORT);
                 }
                 else{
-                    Marker m2 = mMap.addMarker(new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()).snippet(dataSnapshot.getKey().toString()));
+                    Marker m2 = mMap.addMarker(new MarkerOptions()
+                            .position(position1)
+                            .title(dataSnapshot.getKey().toString())
+                            .snippet(dataSnapshot.getKey().toString())
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.images))
+                    );
                     markers.put(dataSnapshot.getKey().toString(),m2);
                     float zoomLevel = 15.0f;
+
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
                     Toast.makeText(getApplicationContext(),"new",Toast.LENGTH_SHORT);
                 }

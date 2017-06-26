@@ -43,6 +43,7 @@ public class GPS_Service extends Service{
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+                Firebase.setAndroidContext(getApplicationContext());
                 Log.e(TAG,"Gps service called");
                 Intent i = new Intent("location_update");
                 i.putExtra("coordinates",location.getLatitude()+" "+location.getLongitude());

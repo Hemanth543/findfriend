@@ -40,7 +40,7 @@ public class signup extends AppCompatActivity {
 
                 SharedPreferences sp = getSharedPreferences("FD",0);
                 SharedPreferences.Editor editor = sp.edit();
-                editor.putString("user_id",phone.toString());
+                editor.putString("user_id",phone.getText().toString());
                 editor.apply();
                 editor.commit();
 

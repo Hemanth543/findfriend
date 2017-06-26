@@ -52,9 +52,8 @@ public class GPS_Service extends Service{
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-
                 firebase.child("location").child(id).setValue(location.getLatitude()+" "+location.getLongitude());
-              //  Toast.makeText(getApplicationContext(),"Phone "+id +" location values "+location.getLatitude()+" "+location.getLongitude(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Phone "+id +" location values "+location.getLatitude()+" "+location.getLongitude(),Toast.LENGTH_SHORT).show();
             }
 
             @Override

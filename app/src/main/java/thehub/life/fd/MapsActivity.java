@@ -27,7 +27,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         //Start service
-        startService(new Intent(this, GPS_Service.class));
+        startService(new Intent(getBaseContext(), GPS_Service.class));
 
     }
 

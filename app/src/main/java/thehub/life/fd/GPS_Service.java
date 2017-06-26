@@ -28,7 +28,7 @@ public class GPS_Service extends Service{
     private LocationListener listener;
     private LocationManager locationManager;
     private static final String TAG = "GPS_SERVICE";
-    private  Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
+    private  static Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
 
 
     @Nullable
@@ -41,6 +41,7 @@ public class GPS_Service extends Service{
     public void onCreate() {
        // Firebase.setAndroidContext(this);
 
+        //firebase.child("abc").setValue("1234");
         SharedPreferences sharedPreferences = getSharedPreferences("FD",0);
         final String id = sharedPreferences.getString("user_id","");
 

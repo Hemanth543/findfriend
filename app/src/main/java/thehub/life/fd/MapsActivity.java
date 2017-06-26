@@ -73,7 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng position1 = new LatLng(Double.parseDouble(coor[0]),Double.parseDouble(coor[1]));
                 mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()));
-                float zoomLevel = 11.0f;
+                float zoomLevel = 15.0f;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
             }
 
@@ -85,7 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng position1 = new LatLng(Double.parseDouble(coor[0]),Double.parseDouble(coor[1]));
                 mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()));
-                float zoomLevel = 11.0f;
+                float zoomLevel = 15.0f;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
             }
 

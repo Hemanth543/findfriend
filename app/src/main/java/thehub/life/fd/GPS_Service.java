@@ -14,6 +14,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 /**
  * Created by rajeshkumarsheela on 6/26/17.
@@ -24,8 +27,8 @@ public class GPS_Service extends Service{
 
     private LocationListener listener;
     private LocationManager locationManager;
-    private final Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
     private static final String TAG = "GPS_SERVICE";
+    private  Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
 
 
     @Nullable
@@ -36,23 +39,21 @@ public class GPS_Service extends Service{
 
     @Override
     public void onCreate() {
+       // Firebase.setAndroidContext(this);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("SecureChat",0);
+        SharedPreferences sharedPreferences = getSharedPreferences("FD",0);
         final String id = sharedPreferences.getString("user_id","");
+
+        if(!FirebaseApp.getApps(this).isEmpty()) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        }
+
 
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                Firebase.setAndroidContext(getApplicationContext());
-                Log.e(TAG,"Gps service called");
-                Intent i = new Intent("location_update");
-                i.putExtra("coordinates",location.getLatitude()+" "+location.getLongitude());
-                Log.e(TAG,"location values "+location.getLatitude()+" "+location.getLongitude());
-
                 firebase.child("location").child(id).setValue(location.getLatitude()+" "+location.getLongitude());
-
-                Toast.makeText(getApplicationContext(),"location values "+location.getLatitude()+" "+location.getLongitude(),Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(getApplicationContext(),"Phone "+id +" location values "+location.getLatitude()+" "+location.getLongitude(),Toast.LENGTH_SHORT).show();
             }
 
             @Override

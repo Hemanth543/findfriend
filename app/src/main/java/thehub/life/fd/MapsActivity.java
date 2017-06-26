@@ -1,9 +1,14 @@
 package thehub.life.fd;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -14,6 +19,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    String user_id;
+    private  static Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //Start service
         startService(new Intent(getBaseContext(), GPS_Service.class));
+        SharedPreferences sharedPreferences = getSharedPreferences("FD",0);
+        user_id = sharedPreferences.getString("user_id","");
 
     }
 
@@ -50,5 +59,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(position1).title("THE HUB"));
         float zoomLevel = 18.0f;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
+
+
+        firebase.child("location").child(user_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String location = dataSnapshot.getValue().toString();
+                String[] coor = location.split(" ");
+                LatLng position1 = new LatLng(Double.parseDouble(coor[0]),Double.parseDouble(coor[1]));
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(position1).title("Friend"));
+                float zoomLevel = 11.0f;
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+
+        });
     }
 }

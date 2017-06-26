@@ -40,7 +40,6 @@ public class GPS_Service extends Service{
     @Override
     public void onCreate() {
        // Firebase.setAndroidContext(this);
-
         //firebase.child("abc").setValue("1234");
         SharedPreferences sharedPreferences = getSharedPreferences("FD",0);
         final String id = sharedPreferences.getString("user_id","");

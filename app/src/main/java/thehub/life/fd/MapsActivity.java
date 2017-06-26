@@ -27,7 +27,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String user_id;
     private  static Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
     MarkerOptions mark;
-    Hashtable<String,Marker> markers;
+    Hashtable<String,Marker> markers = new Hashtable<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,15 +91,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Marker m = markers.get(dataSnapshot.getKey().toString());
                 if(m!=null){
                     m.setPosition(position1);
+                    Toast.makeText(getApplicationContext(),"updation",Toast.LENGTH_SHORT);
                 }
                 else{
-                    mark =  new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()).snippet(dataSnapshot.getKey().toString());
-                    mMap.addMarker(mark);
+                    Marker m2 = mMap.addMarker(new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()).snippet(dataSnapshot.getKey().toString()));
+                    markers.put(dataSnapshot.getKey().toString(),m2);
+                    float zoomLevel = 15.0f;
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
+                    Toast.makeText(getApplicationContext(),"new",Toast.LENGTH_SHORT);
                 }
 
 
-                float zoomLevel = 15.0f;
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
+
             }
 
             @Override

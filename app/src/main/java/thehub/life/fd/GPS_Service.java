@@ -52,6 +52,7 @@ public class GPS_Service extends Service{
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+
                 firebase.child("location").child(id).setValue(location.getLatitude()+" "+location.getLongitude());
               //  Toast.makeText(getApplicationContext(),"Phone "+id +" location values "+location.getLatitude()+" "+location.getLongitude(),Toast.LENGTH_SHORT).show();
             }
@@ -80,9 +81,9 @@ public class GPS_Service extends Service{
 
         locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         //noinspection MissingPermission
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,0,listener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,10000,5,listener);
         //noinspection MissingPermission
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,3000,0,listener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,10000,5,listener);
 
     }
 

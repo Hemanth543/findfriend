@@ -68,13 +68,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         firebase.child("location").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String location = dataSnapshot.getValue().toString();
+               /* String location = dataSnapshot.getValue().toString();
                 String[] coor = location.split(" ");
                 LatLng position1 = new LatLng(Double.parseDouble(coor[0]),Double.parseDouble(coor[1]));
-                mMap.clear();
+                //mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()));
                 float zoomLevel = 15.0f;
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));*/
             }
 
             @Override
@@ -83,8 +83,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String location = dataSnapshot.getValue().toString();
                 String[] coor = location.split(" ");
                 LatLng position1 = new LatLng(Double.parseDouble(coor[0]),Double.parseDouble(coor[1]));
-                mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()));
+                //mMap.clear();
+                MarkerOptions mark =  new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()).snippet(user_id);
+                mMap.addMarker(mark);
                 float zoomLevel = 15.0f;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));
             }

@@ -31,7 +31,6 @@
             android:layout_height="wrap_content"
             android:hint="Enter email"/>
 
-/home/rajeshkumarsheela/Intern_hub/FindMyFriend/home/rajeshkumarsheela/Intern_hub/FindMyFriend/home/rajeshkumarsheela/Intern_hub/FindMyFriend
         <EditText
             android:inputType="number"
             android:id="@+id/phone"

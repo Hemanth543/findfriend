@@ -24,7 +24,7 @@ public class GPS_Service extends Service{
 
     private LocationListener listener;
     private LocationManager locationManager;
-    private static final Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
+    private final Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
     private static final String TAG = "GPS_SERVICE";
 
 

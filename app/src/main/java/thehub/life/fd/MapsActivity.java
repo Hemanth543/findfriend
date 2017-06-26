@@ -26,6 +26,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     String user_id;
     private  static Firebase firebase = new Firebase("https://findmyfriend-795e2.firebaseio.com/");
+    MarkerOptions mark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String[] coor = location.split(" ");
                 LatLng position1 = new LatLng(Double.parseDouble(coor[0]),Double.parseDouble(coor[1]));
                 //mMap.clear();
-                MarkerOptions mark =  new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()).snippet(user_id);
+                mark =  new MarkerOptions().position(position1).title(dataSnapshot.getKey().toString()).snippet(dataSnapshot.getKey().toString());
                 mMap.addMarker(mark);
                 float zoomLevel = 15.0f;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position1, zoomLevel));

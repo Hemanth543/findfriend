@@ -38,7 +38,7 @@ public class GPS_Service extends Service{
     public void onCreate() {
 
         SharedPreferences sharedPreferences = getSharedPreferences("SecureChat",0);
-        String id = sharedPreferences.getString("user_id","");
+        final String id = sharedPreferences.getString("user_id","");
 
         listener = new LocationListener() {
             @Override
@@ -47,7 +47,9 @@ public class GPS_Service extends Service{
                 Intent i = new Intent("location_update");
                 i.putExtra("coordinates",location.getLatitude()+" "+location.getLongitude());
                 Log.e(TAG,"location values "+location.getLatitude()+" "+location.getLongitude());
-                //firebase.child("location").child(id).setValue(location.getLatitude()+" "+location.getLongitude());
+
+                firebase.child("location").child(id).setValue(location.getLatitude()+" "+location.getLongitude());
+
                 Toast.makeText(getApplicationContext(),"location values "+location.getLatitude()+" "+location.getLongitude(),Toast.LENGTH_SHORT).show();
 
             }

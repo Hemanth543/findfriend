@@ -32,11 +32,10 @@ public class SERVER {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 Log.d("Message",s);
-                if (s.equalsIgnoreCase("1")){
-
+                if (s != null){
                     SharedPreferences sp = ctx.getSharedPreferences("FD",0);
                     SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("login",s);
+                    editor.putString("user_id",s);
                     editor.apply();
                     editor.commit();
 
@@ -79,7 +78,7 @@ public class SERVER {
                         BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
                         response = br.readLine();
                        // Toast.makeText(ctx.getApplicationContext(), response, Toast.LENGTH_LONG).show();
-                        response = "1";
+                        response = Phone;
                     }
                     else {
                         response="Error Registering";

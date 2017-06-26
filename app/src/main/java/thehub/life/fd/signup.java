@@ -24,7 +24,7 @@ public class signup extends AppCompatActivity {
         submit=(Button)findViewById(R.id.signup);
 
         SharedPreferences sp = getSharedPreferences("FD",0);
-        String data = sp.getString("login",null);
+        String data = sp.getString("user_id",null);
 
         if(data!=null)
         {

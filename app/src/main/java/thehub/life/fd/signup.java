@@ -38,12 +38,24 @@ public class signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                SERVER.REG_USER(
+                SharedPreferences sp = getSharedPreferences("FD",0);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("user_id",phone.toString());
+                editor.apply();
+                editor.commit();
+
+                Intent intent = new Intent(getApplicationContext(),MapsActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+                /*SERVER.REG_USER(
                         name.getText().toString().toLowerCase(),
                         email.getText().toString().toLowerCase(),
                         phone.getText().toString(),
                        getApplicationContext()
-                );
+                );*/
 
             }
         });
